@@ -3,7 +3,6 @@ const randomOutput = document.querySelector('.random-numbers');
 const playerOutput = document.querySelector('.player-numbers');
  
 
-
 const limit = 5;
 let counter = limit;
 countDown.innerHTML = limit;
@@ -15,15 +14,15 @@ start();
 setTimeout(function(){
   let playerNumbers = getPlayerNumber();
   let correctNumbers = compareNumbers(playerNumbers,numbersRandom)
-  playerOutput.innerHTML = `Hai ricordato i seguenti numeri:${correctNumbers.join('-')} il punteggio è ${counterCorrectWord} su 5`;
+  playerOutput.innerHTML = `Hai tenuto a mente i seguenti numeri:${correctNumbers.join('-')} il punteggio è ${counterCorrectWord} su 5`;
+  randomOutput.classList.remove('d-none')
 },6000)
 
 randomOutput.innerHTML = numbersRandom.join('-');
 
 // Functions
 
-
-// countdown
+// countdown start for d-none numbers 
 function start(){
   const clock = setInterval(function(){
     counter--;
@@ -36,7 +35,7 @@ function start(){
   },1000)
 }
 
-// function prompt
+// function prompt repeat for 5 times prompt for take numbers no allowed same number or no number
 function getPlayerNumber(){
   const playerNumbers = [];
   while(playerNumbers.length < 5){
@@ -51,7 +50,7 @@ function getPlayerNumber(){
 }
 
 
-// check function
+// function for check correct numbers and take it
 function compareNumbers(listPlayer,listRandom){
   const correctNumbers = []
   for(let i = 0; i < 5;i++){
@@ -65,7 +64,7 @@ function compareNumbers(listPlayer,listRandom){
   return correctNumbers
 }
 
-// random 
+// random generate 
 function generateNumbers(min,max){
   const numbersRandom = [];
   while(numbersRandom.length < 5){
