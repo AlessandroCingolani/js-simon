@@ -8,25 +8,17 @@ const limit = 5;
 let counter = limit;
 countDown.innerHTML = limit;
 let numbersRandom = generateNumbers(1,30);
-let playerNumbers = [];
 let counterCorrectWord = 0;
 
 start();
 
 setTimeout(function(){
-  playerNumbers = getPlayerNumber();
-  compareNumbers(playerNumbers,numbersRandom)
-  playerOutput.innerHTML = correctNumbers.join('-');
-    
+  let playerNumbers = getPlayerNumber();
+  let correctNumbers = compareNumbers(playerNumbers,numbersRandom)
+  playerOutput.innerHTML = `Hai ricordato i seguenti numeri:${correctNumbers.join('-')} il punteggio è ${counterCorrectWord} su 5`;
 },6000)
 
-
-playerOutput.innerHTML = playerNumbers.join('-');
 randomOutput.innerHTML = numbersRandom.join('-');
-
-console.log(numbersRandom);
-
-
 
 // Functions
 
