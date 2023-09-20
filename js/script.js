@@ -1,16 +1,18 @@
 const countDown = document.querySelector('h3');
-const numbersRandom = document.querySelector('h2');
+const randomOutput = document.querySelector('h2');
  
 
 
 const limit = 5;
 let counter = limit;
 countDown.innerHTML = limit;
-
+let numbersRandom = generateNumbers(1,30);
 
 start();
 
-numbersRandom.innerHTML = generateNumbers(1,30).join('-');
+randomOutput.innerHTML = numbersRandom.join('-');
+
+console.log(numbersRandom);
 
 
 
@@ -30,7 +32,7 @@ function start(){
     if(counter === 0){
       clearInterval(clock)
       countDown.classList.add('d-none')
-      numbersRandom.classList.add('d-none')
+      randomOutput.classList.add('d-none')
     }
   },1000)
 
