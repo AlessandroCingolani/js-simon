@@ -1,5 +1,6 @@
 const countDown = document.querySelector('h3');
 const randomOutput = document.querySelector('.random-numbers');
+const playerOutput = document.querySelector('.player-numbers');
  
 
 
@@ -7,10 +8,20 @@ const limit = 5;
 let counter = limit;
 countDown.innerHTML = limit;
 let numbersRandom = generateNumbers(1,30);
-
+let playerNumbers = [];
+let counterCorrectWord = 0;
 
 start();
 
+setTimeout(function(){
+  playerNumbers = getPlayerNumber();
+  compareNumbers(playerNumbers,numbersRandom)
+  playerOutput.innerHTML = correctNumbers.join('-');
+    
+},6000)
+
+
+playerOutput.innerHTML = playerNumbers.join('-');
 randomOutput.innerHTML = numbersRandom.join('-');
 
 console.log(numbersRandom);
@@ -22,7 +33,6 @@ console.log(numbersRandom);
 
 // countdown
 function start(){
-  let validCd = false;
   const clock = setInterval(function(){
     counter--;
     countDown.innerHTML = counter;
@@ -30,16 +40,8 @@ function start(){
       clearInterval(clock)
       countDown.classList.add('d-none')
       randomOutput.classList.add('d-none')
-      validCd = true;
-      if(validCd){
-        setTimeout(function(){
-          getPlayerNumber();
-        },1000)
-      }
-      
-    }
+      } 
   },1000)
-  
 }
 
 // function prompt
@@ -53,9 +55,23 @@ function getPlayerNumber(){
       playerNumbers.push(number)
     }
   }
-  return (playerNumbers);
+  return playerNumbers;
 }
 
+
+// check function
+function compareNumbers(listPlayer,listRandom){
+  const correctNumbers = []
+  for(let i = 0; i < 5;i++){
+    let check = listPlayer[i]
+    if(listRandom.includes(check)){
+      counterCorrectWord++
+      correctNumbers.push(check)
+      console.log(correctNumbers);
+    }
+  }
+  return correctNumbers
+}
 
 // random 
 function generateNumbers(min,max){
