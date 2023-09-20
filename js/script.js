@@ -20,7 +20,6 @@ console.log(numbersRandom);
 
 
 
-
 // Functions
 
 
@@ -33,9 +32,24 @@ function start(){
       clearInterval(clock)
       countDown.classList.add('d-none')
       randomOutput.classList.add('d-none')
+      getPlayerNumber();
     }
   },1000)
 
+}
+
+// function prompt
+function getPlayerNumber(){
+  const playerNumbers = [];
+  while(playerNumbers.length < 5){
+    let number = parseInt(prompt('Inserire numero tra quelli visti'));
+    if (!number || playerNumbers.includes(number)) {
+      alert('PARAMETRO NON VALIDO')
+    }else {
+      playerNumbers.push(number)
+    }
+  }
+  console.log(playerNumbers);
 }
 
 
