@@ -1,5 +1,5 @@
 const countDown = document.querySelector('h3');
-const randomOutput = document.querySelector('h2');
+const randomOutput = document.querySelector('.random-numbers');
  
 
 
@@ -7,6 +7,7 @@ const limit = 5;
 let counter = limit;
 countDown.innerHTML = limit;
 let numbersRandom = generateNumbers(1,30);
+
 
 start();
 
@@ -16,15 +17,12 @@ console.log(numbersRandom);
 
 
 
-
-
-
-
 // Functions
 
 
 // countdown
 function start(){
+  let validCd = false;
   const clock = setInterval(function(){
     counter--;
     countDown.innerHTML = counter;
@@ -32,10 +30,16 @@ function start(){
       clearInterval(clock)
       countDown.classList.add('d-none')
       randomOutput.classList.add('d-none')
-      getPlayerNumber();
+      validCd = true;
+      if(validCd){
+        setTimeout(function(){
+          getPlayerNumber();
+        },1000)
+      }
+      
     }
   },1000)
-
+  
 }
 
 // function prompt
@@ -49,7 +53,7 @@ function getPlayerNumber(){
       playerNumbers.push(number)
     }
   }
-  console.log(playerNumbers);
+  return (playerNumbers);
 }
 
 
