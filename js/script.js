@@ -1,4 +1,5 @@
 const countDown = document.querySelector('h3');
+const title = document.querySelector('h1');
 const randomOutput = document.querySelector('.random-numbers');
 const playerOutput = document.querySelector('.player-numbers');
  
@@ -14,7 +15,7 @@ start();
 setTimeout(function(){
   let playerNumbers = getPlayerNumber();
   let correctNumbers = compareNumbers(playerNumbers,numbersRandom)
-  playerOutput.innerHTML = `Hai tenuto a mente i seguenti numeri:${correctNumbers.join('-')} il punteggio è ${counterCorrectWord} su 5`;
+  playerOutput.innerHTML = `Hai tenuto a mente i seguenti numeri:'${correctNumbers.join('-')}' il punteggio è ${counterCorrectWord} su 5`;
   randomOutput.classList.remove('d-none')
 },6000)
 
@@ -29,8 +30,9 @@ function start(){
     countDown.innerHTML = counter;
     if(counter === 0){
       clearInterval(clock)
-      countDown.classList.add('d-none')
-      randomOutput.classList.add('d-none')
+      countDown.classList.add('d-none');
+      randomOutput.classList.add('d-none');
+      title.classList.add('d-none');
       } 
   },1000)
 }
